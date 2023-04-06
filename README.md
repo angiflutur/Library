@@ -1,6 +1,5 @@
 # Library
 advanced oop project in java
-# Biblioteca
 
 
 **Tema proiectului**: implementarea unui sistem de gestiune al unei biblioteci
