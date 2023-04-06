@@ -1,10 +1,11 @@
 # Library
-advanced oop project in java
+*advanced oop project in java*
+
 
 
 **Tema proiectului**: implementarea unui sistem de gestiune al unei biblioteci
 
-- Clase
+### *Clase*
 
 - **Autor**
 - **Carte**
