@@ -3,6 +3,7 @@ package Models;
 import java.util.Arrays;
 
 public class CititorNormal extends Cititor {
+
     private static int count = 0;
     private final static int limitaCarti = 3;
 

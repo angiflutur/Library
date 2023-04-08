@@ -22,22 +22,24 @@ public class ServiciiCarte {
     // adaugare carte
     public void adaugaCarte(Carte carte, Sectiune sectiune) {
         boolean existaCartea = false;
+        // verificam daca cartea exista deja in biblioteca
         for (Carte c: carti) {
             if (c == null) {
                 break;
             }
-            if (c.equals(carte)) {
+            if (c.getTitlu().equals(carte.getTitlu())) {
                 existaCartea = true;
                 break;
             }
         }
 
-        if (existaCartea) {
+        if (existaCartea == true) {
             System.out.println("Cartea este deja in biblioteca!");
             return;
         }
 
         boolean existaSectiunea = false;
+        // verificam daca exista sectiunea
         for (Sectiune i: sectiuni) {
             if (i == null) {
                 break;
@@ -48,6 +50,7 @@ public class ServiciiCarte {
                 break;
             }
         }
+        // adaugam cartea daca sectiunea exista
         if (existaSectiunea)
             for (int i = 0; i < carti.length; i++) {
                 if (carti[i] == null) {
@@ -63,6 +66,7 @@ public class ServiciiCarte {
     // stergere carte
     public void stergeCarte(Carte carte) {
         boolean found = false;
+        // cautam cartea in biblioteca, daca exista o stergem
         for (int i = 0; i <= indexCurent; i++) {
             if (carti[i].getId().equals(carte.getId())) {
                 found = true;
@@ -83,6 +87,7 @@ public class ServiciiCarte {
     //adaugare sectiune
     public void adaugaSectiune(Sectiune sectiune) {
         boolean exists = false;
+        // verificam daca sectiunea exista deja
         for (Sectiune section: sectiuni) {
             if (section != null && section.getNume().equals(sectiune.getNume())) {
                 exists = true;
@@ -101,6 +106,7 @@ public class ServiciiCarte {
     //stergere sectiune
     public void stergeSectiune(Sectiune sectiune) {
         boolean found = false;
+        // verificam daca sectiunea exista
         for (int i = 0; i <= indexSectiune; i++) {
             if (sectiuni[i].getNume().equals(sectiune.getNume())) {
                 found = true;
@@ -118,6 +124,7 @@ public class ServiciiCarte {
             }
 
         }
+        // daca sectiunea nu exista, nu o putem sterge
         if (!found) {
             System.out.println("Sectiunea nu a fost gasita in biblioteca!");
         }
@@ -140,20 +147,21 @@ public class ServiciiCarte {
                 return;
             }
         }
-        System.out.println("Book with ID " +idCarte + " not found!");
+        // daca nu am dat return mai devreme, inseamna ca nu am gasit cartea in biblioteca
+        System.out.println("Cartea cu id-ul " +idCarte + " nu a fost gasita!");
     }
     public void detaliiCarte(Carte carte) {
         System.out.println("Detalii despre cartea cu titlul \"" + carte.getTitlu() + "\":");
         System.out.println("Autor: " + carte.getAutor().getNume() + " " + carte.getAutor().getPrenume());
         System.out.println("Editura: " + carte.getEditura().getNume());
         System.out.println("An aparitie: " + carte.getAnPublicare());
-        System.out.println("Sectiune: " + (carte.getSectiune() != null ? carte.getSectiune().getNume() : "Nespecificat"));
+        System.out.println("Sectiune: " + carte.getSectiune().getNume());
     }
 
     public void afisareToateCartile() {
         for (Carte carte : carti) {
             if (carte != null) {
-                System.out.println(carte.toString());
+                System.out.println(carte.getTitlu() + " de " + carte.getAutor().getNume() + " " + carte.getAutor().getPrenume());
             }
         }
     }
@@ -167,7 +175,7 @@ public class ServiciiCarte {
                 if(ok == 0)
                     System.out.println("Cartile de la autorul " + autor.getNume() + " " + autor.getPrenume() + " sunt:\n");
                 ok = 1;
-                System.out.println(carte.toString());
+                System.out.println(carte.getTitlu());
             }
         }
         if(ok == 0)
@@ -184,7 +192,7 @@ public class ServiciiCarte {
                 if(ok == 0)
                     System.out.println("Cartile din sectiunea " + sectiune.getNume() + " sunt:\n");
                 ok = 1;
-                System.out.println(carte.toString());
+                System.out.println(carte.getTitlu());
             }
         }
         if(ok == 0)
